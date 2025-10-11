@@ -1,4 +1,5 @@
-# DewaKoding Project Management
+# Cytrack - Project Management System
+### by KSM Cyber Security UPNVJ
 
 ![image](https://raw.githubusercontent.com/SeptiawanAjiP/dewakoding-project-management/refs/heads/main/image-1.jpeg)
 ![image](https://raw.githubusercontent.com/SeptiawanAjiP/dewakoding-project-management/refs/heads/main/image-4.jpeg)
@@ -42,8 +43,8 @@ A Laravel Filament 3 application for managing projects with ticket management an
 
 1. Clone the repository:
    ```
-   git clone https://github.com/SeptiawanAjiP/dewakoding-project-management
-   cd dewakoding-project-management
+   git clone https://github.com/your-organization/cytrack-project-management
+   cd cytrack-project-management
    ```
 
 2. Install dependencies:
@@ -63,7 +64,7 @@ A Laravel Filament 3 application for managing projects with ticket management an
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=dewakoding_project_management
+   DB_DATABASE=cytrack_project_management
    DB_USERNAME=root
    DB_PASSWORD=
    ```
@@ -164,7 +165,7 @@ This application supports Google OAuth login. Here's how to configure it:
    - In the sidebar, select "APIs & Services" > "Credentials"
    - Click "Create Credentials" > "OAuth 2.0 Client IDs"
    - Select "Web application" as the application type
-   - Enter application name (example: "DewaKoding Project Management")
+   - Enter application name (example: "Cytrack Project Management")
    - In "Authorized redirect URIs", add:
      ```
      http://localhost:8000/auth/google/callback
@@ -216,7 +217,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-app-password
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=your-email@gmail.com
-MAIL_FROM_NAME="DewaKoding Project Management"
+MAIL_FROM_NAME="Cytrack by KSM Cyber Security UPNVJ"
 ```
 
 ### 2. Queue Configuration
@@ -293,3 +294,22 @@ This project is licensed under the GNU General Public License v3.0 or later (GPL
 - ⚠️ Must include copyright notice and license text
 
 For the full license text, see the [LICENSE](LICENSE) file.
+
+---
+
+## Credits & Attribution
+
+This project is a customized version based on [DewaKoding Project Management](https://github.com/SeptiawanAjiP/dewakoding-project-management) by [@SeptiawanAjiP](https://github.com/SeptiawanAjiP).
+
+**Original Project:**
+- **Author**: DewaKoding (@SeptiawanAjiP)
+- **Repository**: https://github.com/SeptiawanAjiP/dewakoding-project-management
+- **License**: GNU General Public License v3.0
+
+**Customizations for KSM Cyber Security UPNVJ:**
+- Rebranded to "Cytrack" for KSM Cyber Security UPNVJ
+- Customized color scheme to monochrome palette
+- Updated copywriting for student-friendly English interface
+- Tailored for cyber security work program management
+
+We are grateful to the original author for creating and maintaining this excellent open-source project management system.
