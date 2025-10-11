@@ -1,4 +1,5 @@
-# DewaKoding Project Management
+# Cytrack - Project Management System
+### by KSM Cyber Security UPNVJ
 
 ![image](https://raw.githubusercontent.com/SeptiawanAjiP/dewakoding-project-management/refs/heads/main/image-1.jpeg)
 ![image](https://raw.githubusercontent.com/SeptiawanAjiP/dewakoding-project-management/refs/heads/main/image-4.jpeg)
@@ -42,8 +43,8 @@ A Laravel Filament 3 application for managing projects with ticket management an
 
 1. Clone the repository:
    ```
-   git clone https://github.com/SeptiawanAjiP/dewakoding-project-management
-   cd dewakoding-project-management
+   git clone https://github.com/your-organization/cytrack-project-management
+   cd cytrack-project-management
    ```
 
 2. Install dependencies:
@@ -63,7 +64,7 @@ A Laravel Filament 3 application for managing projects with ticket management an
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=dewakoding_project_management
+   DB_DATABASE=cytrack_project_management
    DB_USERNAME=root
    DB_PASSWORD=
    ```
@@ -164,7 +165,7 @@ This application supports Google OAuth login. Here's how to configure it:
    - In the sidebar, select "APIs & Services" > "Credentials"
    - Click "Create Credentials" > "OAuth 2.0 Client IDs"
    - Select "Web application" as the application type
-   - Enter application name (example: "DewaKoding Project Management")
+   - Enter application name (example: "Cytrack Project Management")
    - In "Authorized redirect URIs", add:
      ```
      http://localhost:8000/auth/google/callback
@@ -216,7 +217,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-app-password
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=your-email@gmail.com
-MAIL_FROM_NAME="DewaKoding Project Management"
+MAIL_FROM_NAME="Cytrack by KSM Cyber Security UPNVJ"
 ```
 
 ### 2. Queue Configuration
@@ -293,3 +294,98 @@ This project is licensed under the GNU General Public License v3.0 or later (GPL
 - ⚠️ Must include copyright notice and license text
 
 For the full license text, see the [LICENSE](LICENSE) file.
+
+---
+
+## Credits & Attribution
+
+This project is a customized version based on [DewaKoding Project Management](https://github.com/SeptiawanAjiP/dewakoding-project-management) by [@SeptiawanAjiP](https://github.com/SeptiawanAjiP).
+
+**Original Project:**
+- **Author**: DewaKoding (@SeptiawanAjiP)
+- **Repository**: https://github.com/SeptiawanAjiP/dewakoding-project-management
+- **License**: GNU General Public License v3.0
+
+**Customizations for KSM Cyber Security UPNVJ:**
+- Rebranded to "Cytrack" for KSM Cyber Security UPNVJ
+- Customized color scheme to monochrome palette
+- Updated copywriting for student-friendly English interface
+- Tailored for cyber security work program management
+
+We are grateful to the original author for creating and maintaining this excellent open-source project management system.
+
+---
+
+## Changelog
+
+### Version 1.0.0 (Initial Release - Cytrack by KSM Cyber Security UPNVJ)
+*Release Date: January 2025*
+
+#### 🎨 Branding & Design
+- **Rebranded to Cytrack** - Project management system for KSM Cyber Security UPNVJ
+- **Monochrome Color Scheme** - Professional gray-scale palette following UI/UX best practices
+- **Custom Logo Integration** - Cytrack branding across admin panel and landing page
+- **Student-Friendly Interface** - Casual, modern design tailored for university organization
+
+#### 📋 Core Project Management Features
+- **Project Management** - Complete project lifecycle management with customizable ticket prefixes
+- **Ticket Management System** - Create, assign, and track tickets with unique identifiers
+- **Epic Management** - Organize related tickets into larger initiatives with progress tracking
+- **Customizable Ticket Statuses** - Define workflow stages with color coding
+- **Multi-User Assignment** - Assign tickets to multiple team members simultaneously
+- **Due Date Tracking** - Set and monitor deadlines for tickets and projects
+- **Comment System** - Facilitate team discussions directly on tickets with rich text support
+
+#### 📊 Visualization & Tracking
+- **Kanban Board View** - Drag-and-drop interface for visualizing ticket progress
+- **Timeline View** - Chronological perspective of project roadmap with Gantt-style visualization
+- **User Contributions Chart** - Track individual team member productivity and contributions
+- **Leaderboard System** - Gamified performance tracking for team engagement
+- **Progress Tracking** - Real-time project and ticket completion monitoring
+
+#### 👥 Team & Access Management
+- **Role-Based Access Control (RBAC)** - Powered by Filament Shield
+- **Team Member Management** - Add, remove, and manage project team members
+- **Role Assignments** - Assign specific roles and permissions to users
+- **External Dashboard** - Client portal for stakeholder visibility without admin access
+
+#### 📧 Communication & Notifications
+- **Email Notifications** - Automated notifications for project assignments and updates
+- **Queue System** - Asynchronous email processing for optimal performance
+- **Project Assignment Emails** - Welcome emails when users are added to projects
+- **Comment Notifications** - Alerts for new ticket discussions
+- **Ticket Update Notifications** - Status change alerts for stakeholders
+
+#### 🔐 Authentication & Security
+- **Google OAuth Integration** - Single sign-on with Google accounts
+- **Email Verification** - Secure account confirmation process
+- **Password Reset** - Self-service password recovery
+- **Session Management** - Secure authentication with session handling
+
+#### 📤 Data Management
+- **CSV Export** - Export ticket data for external analysis and reporting
+- **Data Import/Export** - Bulk operations for efficient data management
+
+#### 🛠️ Technical Features
+- **Laravel 12** - Built on latest Laravel framework
+- **Filament 3** - Modern admin panel with excellent DX
+- **MySQL/PostgreSQL Support** - Flexible database options
+- **Docker Support** - Containerized deployment ready
+- **SPA Mode** - Single-page application for faster navigation
+- **Database Transactions** - Data integrity and rollback support
+- **Responsive Design** - Mobile-friendly interface
+
+#### 🌐 Localization & Content
+- **English Interface** - Full English language support
+- **Student-Friendly Copywriting** - Casual, approachable messaging
+- **Work Program Context** - Tailored for cyber security organization workflows
+
+#### 📝 Documentation
+- **Comprehensive README** - Detailed installation and configuration guide
+- **Google OAuth Setup Guide** - Step-by-step integration instructions
+- **Queue & Email Configuration** - Production-ready email setup documentation
+- **Supervisor Configuration** - Production deployment best practices
+
+---
+
+**Note:** This version represents the initial customized release for KSM Cyber Security UPNVJ, based on the original DewaKoding Project Management system.
