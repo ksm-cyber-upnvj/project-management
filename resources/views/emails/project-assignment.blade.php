@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anda telah ditambahkan ke project</title>
+    <title>You've Been Added to a Project</title>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -446,18 +446,18 @@
                             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                 </div>
-                <h1>Selamat Bergabung!</h1>
-                <p>Anda telah ditambahkan ke project baru</p>
+                <h1>You're In! 🎉</h1>
+                <p>You've been added to a new project</p>
             </div>
         </div>
 
         <div class="content">
             <div class="greeting">
-                Halo {{ $assignedUser->name }}! 👋
+                Hey {{ $assignedUser->name }}! 👋
             </div>
 
             <p style="color: #6b7280; margin-bottom: 25px; animation: fadeIn 0.8s ease-out 0.5s both;">
-                Kami senang menginformasikan bahwa Anda telah ditambahkan ke project berikut:
+                Great news! You've been added to a new work program. Here are the details:
             </p>
 
             <div class="project-card">
@@ -467,29 +467,29 @@
                 @endif
 
                 <div class="assigned-by">
-                    <div class="assigned-by-label">Ditambahkan oleh</div>
+                    <div class="assigned-by-label">Added by</div>
                     <div class="assigned-by-name">{{ $assignedBy->name }}</div>
                 </div>
             </div>
 
             <div style="text-align: center;">
                 <a href="{{ $projectUrl }}" class="cta-button">
-                    🚀 Lihat Project
+                    🚀 View Project
                 </a>
             </div>
 
             <div class="divider"></div>
 
             <p style="color: #6b7280; font-size: 14px; text-align: center;">
-                Klik tombol di atas untuk mengakses project dan mulai berkontribusi!
+                Click the button above to access the project and start collaborating with your team!
             </p>
         </div>
 
         <div class="footer">
-            <p>Email ini dikirim secara otomatis dari sistem Project Management.</p>
+            <p>This email was sent automatically from Cytrack by KSM Cyber Security UPNVJ.</p>
             <p>
-                <a href="{{ config('app.url') }}">Kunjungi Dashboard</a> |
-                <a href="{{ config('app.url') }}/admin/notifications">Kelola Notifikasi</a>
+                <a href="{{ config('app.url') }}">Visit Dashboard</a> |
+                <a href="{{ config('app.url') }}/admin/notifications">Manage Notifications</a>
             </p>
         </div>
     </div>
