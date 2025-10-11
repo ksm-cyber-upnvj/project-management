@@ -19,7 +19,7 @@ services:
     container_name: laravel_nginx
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - "8100:80"
     volumes:
       - ./:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
@@ -44,7 +44,7 @@ services:
       - laravel-data:/var/lib/mysql
     networks:
       - laravel-network
-      
+
   # PhpMyAdmin Service
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

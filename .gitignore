@@ -25,3 +25,7 @@ yarn-error.log
 **/caddy
 frankenphp
 frankenphp-worker.php
+
+
+#Ignore cursor AI rules
+.cursor/rules/codacy.mdc
