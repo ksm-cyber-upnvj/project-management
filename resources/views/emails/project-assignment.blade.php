@@ -31,7 +31,7 @@
     }
 
     .header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
         padding: 40px 30px;
         text-align: center;
         position: relative;
@@ -188,7 +188,7 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
+        background: linear-gradient(90deg, #374151, #1f2937);
     }
 
     .project-name {
@@ -294,7 +294,7 @@
     }
 
     .project-description a {
-        color: #667eea;
+        color: #374151;
         text-decoration: none;
     }
 
@@ -303,7 +303,7 @@
     }
 
     .assigned-by {
-        background: rgba(99, 102, 241, 0.1);
+        background: rgba(107, 114, 128, 0.1);
         border-radius: 8px;
         padding: 15px;
         margin: 20px 0;
@@ -325,7 +325,7 @@
     .assigned-by-label {
         font-size: 12px;
         font-weight: 600;
-        color: #6366f1;
+        color: #4b5563;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         margin-bottom: 5px;
@@ -339,7 +339,7 @@
 
     .cta-button {
         display: inline-block;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
         color: white;
         text-decoration: none;
         padding: 16px 32px;
@@ -350,7 +350,7 @@
         margin: 30px 0;
         transition: all 0.3s ease;
         animation: bounceIn 0.8s ease-out 1s both;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 4px 15px rgba(31, 41, 55, 0.4);
     }
 
     @keyframes bounceIn {
@@ -376,7 +376,7 @@
 
     .cta-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        box-shadow: 0 6px 20px rgba(31, 41, 55, 0.6);
     }
 
     .footer {
@@ -393,7 +393,7 @@
     }
 
     .footer a {
-        color: #667eea;
+        color: #374151;
         text-decoration: none;
     }
 
