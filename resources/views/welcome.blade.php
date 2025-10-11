@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name', 'Cytrack by KSM Cyber Security UPNVJ') }}</title>
 
+        <!-- Favicons -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon/favicon.ico') }}">
+
         <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -31,9 +34,9 @@
         <div class="min-h-screen flex flex-col items-center">
             <header class="w-full py-6 px-6 sm:px-10 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 8H19M5 8C3.89543 8 3 7.10457 3 6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6C21 7.10457 20.1046 8 19 8M5 8V18C5 19.1046 5.89543 20 7 20H17C18.1046 20 19 19.1046 19 18V8M10 12H14"></path>
-                    </svg>
+                    <img src="{{ asset('images/logo/logo-full.png') }}"
+                         alt="Cytrack Logo"
+                         class="h-10">
                     <span class="text-xl font-semibold">Cytrack</span>
                 </div>
                 

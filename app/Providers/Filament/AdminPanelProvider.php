@@ -30,6 +30,10 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('Cytrack')
+            ->brandLogo(asset('images/logo/logo-full.png'))
+            ->brandLogoHeight('2.5rem')
+            ->favicon(asset('images/favicon/favicon.ico'))
             ->login(Login::class)
             ->registration()
             ->colors([
