@@ -59,6 +59,35 @@ services:
     networks:
       - laravel-network
 
+  # MailHog Service (for development email testing)
+  mailhog:
+    image: mailhog/mailhog
+    container_name: laravel_mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"  # SMTP port
+      - "8025:8025"  # Web UI port
+    networks:
+      - laravel-network
+
+  # Queue Worker Service (for email notifications)
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_queue
+    restart: unless-stopped
+    working_dir: /var/www
+    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - db
+      - mailhog
+    networks:
+      - laravel-network
+
 networks:
   laravel-network:
     driver: bridge

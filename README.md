@@ -318,6 +318,32 @@ We are grateful to the original author for creating and maintaining this excelle
 
 ## Changelog
 
+### Version 1.1.0 (MailHog Integration & Queue Worker)
+
+#### 📧 Email Development Tools
+- **MailHog Integration** - Added MailHog service for email testing in development environment
+  - Web UI accessible at http://localhost:8025 for viewing test emails
+  - SMTP server running on port 1025 for Laravel email delivery
+  - No need for real SMTP credentials during development
+- **Automated Queue Worker** - Added dedicated queue worker service in Docker Compose
+  - Automatic email notification processing in background
+  - Auto-restart on failure for reliability
+  - Configured with optimal settings (3 retries, 1-hour max time)
+  - No manual queue:work command needed
+
+#### 🔧 Configuration Improvements
+- **Environment Configuration** - Updated .env.example and .env with MailHog settings
+  - Clear separation between development (MailHog) and production (SMTP) configurations
+  - Commented production SMTP examples for easy switching
+  - Added MAIL_ENCRYPTION configuration for better security control
+
+#### 🐳 Docker Compose Enhancements
+- **MailHog Service** - Containerized email testing service
+- **Queue Worker Service** - Dedicated container for processing background jobs
+- **Service Dependencies** - Proper dependency management between services
+
+---
+
 ### Version 1.0.0 (Initial Release - Cytrack by KSM Cyber Security UPNVJ)
 *Release Date: January 2025*
 
