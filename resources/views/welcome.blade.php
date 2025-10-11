@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name', 'Dewakoding Project Management') }}</title>
+        <title>{{ config('app.name', 'Cytrack by KSM Cyber Security UPNVJ') }}</title>
 
         <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,7 @@
                     <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 8H19M5 8C3.89543 8 3 7.10457 3 6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6C21 7.10457 20.1046 8 19 8M5 8V18C5 19.1046 5.89543 20 7 20H17C18.1046 20 19 19.1046 19 18V8M10 12H14"></path>
                     </svg>
-                    <span class="text-xl font-semibold">DewaKoding</span>
+                    <span class="text-xl font-semibold">Cytrack</span>
                 </div>
                 
                 @if (Route::has('login'))
@@ -102,7 +102,7 @@
 
             <footer class="w-full py-8 px-6 sm:px-10">
                 <div class="max-w-4xl mx-auto text-center">
-                    <p class="text-gray-600">© {{ date('Y') }} DewaKoding. All rights reserved.</p>
+                    <p class="text-gray-600">© {{ date('Y') }} Cytrack by KSM Cyber Security UPNVJ. All rights reserved.</p>
                     <p class="text-sm text-gray-500 mt-2">Built with Laravel and Filament</p>
                 </div>
             </footer>
