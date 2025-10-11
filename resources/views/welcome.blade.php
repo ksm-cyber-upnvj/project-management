@@ -58,8 +58,8 @@
             <main class="flex-1 flex flex-col items-center justify-center w-full px-6 sm:px-10 py-12">
                 <div class="max-w-4xl w-full">
                     <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold mb-4">Project Management <span class="text-gradient">Simplified</span></h1>
-                        <p class="text-xl text-gray-600 max-w-4xl mx-auto">Streamline your workflow with our intuitive and collaborative project management tool, designed for teams of all sizes.</p>
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">Manage, Track, Collaborate <span class="text-gradient">All in One Place</span></h1>
+                        <p class="text-xl text-gray-600 max-w-4xl mx-auto">A comprehensive platform designed for KSM Cyber Security UPNVJ to streamline work program management, tracking, collaboration, and documentation in a single workspace.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -96,9 +96,9 @@
 
                     <div class="flex flex-col items-center">
                         <a href="/admin" class="gradient-background text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-lg">
-                            Access Admin Panel
+                            Access Dashboard
                         </a>
-                        <p class="mt-4 text-sm text-gray-500">Manage your projects and team from our powerful administration dashboard</p>
+                        <p class="mt-4 text-sm text-gray-500">Start managing your work programs and collaborate with your team</p>
                     </div>
                 </div>
             </main>
@@ -106,7 +106,7 @@
             <footer class="w-full py-8 px-6 sm:px-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <p class="text-gray-600">© {{ date('Y') }} Cytrack by KSM Cyber Security UPNVJ. All rights reserved.</p>
-                    <p class="text-sm text-gray-500 mt-2">Built with Laravel and Filament</p>
+                    <p class="text-sm text-gray-500 mt-2">Empowering cyber security work programs through seamless collaboration</p>
                 </div>
             </footer>
         </div>
