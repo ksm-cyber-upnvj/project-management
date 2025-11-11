@@ -281,6 +281,54 @@ The application sends email notifications for:
 
 **Note:** Make sure the queue worker is always running to process email notifications. Without the queue worker, emails will not be sent.
 
+## Testing
+
+Cytrack includes automated tests to ensure code quality and prevent bugs.
+
+### Running Tests
+
+Start Docker services first:
+```bash
+docker compose up -d db app
+```
+
+Run all tests:
+```bash
+docker compose exec -T app php artisan test
+```
+
+Run specific test suites:
+```bash
+# Unit tests only
+docker compose exec -T app php artisan test --testsuite=Unit
+
+# Feature tests only
+docker compose exec -T app php artisan test --testsuite=Feature
+```
+
+Run with additional options:
+```bash
+# With colors for better readability
+docker compose exec -T app php artisan test --colors
+
+# Stop on first failure
+docker compose exec -T app php artisan test --stop-on-failure
+
+# Verbose output
+docker compose exec -T app php artisan test -v
+```
+
+### Troubleshooting
+
+If tests fail due to database connection:
+```bash
+docker compose up -d db
+sleep 10
+docker compose exec -T app php artisan test
+```
+
+**Note:** Tests use a separate database and automatically reset between runs. Your development data won't be affected.
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later).
