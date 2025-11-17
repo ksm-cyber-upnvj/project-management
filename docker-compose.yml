@@ -65,8 +65,8 @@ services:
     container_name: laravel_mailhog
     restart: unless-stopped
     ports:
-      - "1025:1025"  # SMTP port
-      - "8025:8025"  # Web UI port
+      - "1026:1025" # SMTP port
+      - "8026:8025" # Web UI port
     networks:
       - laravel-network
 
