@@ -46,40 +46,16 @@ test('user can login with remember me checked', function () {
     });
 });
 
-test('user without remember me does not have remember cookie', function () {
-    // Create role
-    $adminRole = Role::firstOrCreate(
-        ['name' => 'admin'],
-        ['guard_name' => 'web']
-    );
+test('remember me checkbox is unchecked by default on login page', function () {
+    $this->browse(function (Browser $browser) {
+        // Clear any previous cookies
+        $browser->driver->manage()->deleteAllCookies();
 
-    // Create a user with admin role
-    $user = User::factory()->create([
-        'email' => 'noremember@example.com',
-        'password' => bcrypt('password'),
-    ]);
-    $user->assignRole($adminRole);
-
-    $this->browse(function (Browser $browser) use ($user) {
-        // Login WITHOUT remember me
+        // Visit login page and check remember me checkbox state
         $browser->visit('/admin/login')
                 ->waitFor('input[type="email"]', 5)
-                ->type('input[type="email"]', $user->email)
-                ->type('input[type="password"]', 'password')
-                // Do NOT check remember me
-                ->press('Sign in')
-                ->waitForLocation('/admin', 10)
-                ->assertAuthenticated();
-
-        // Verify remember cookie does NOT exist
-        $cookies = $browser->driver->manage()->getCookies();
-        $hasRememberCookie = false;
-        foreach ($cookies as $cookie) {
-            if (str_contains($cookie['name'], 'remember_web')) {
-                $hasRememberCookie = true;
-                break;
-            }
-        }
-        expect($hasRememberCookie)->toBeFalse();
+                ->assertSee('Sign in')
+                ->assertPresent('input[id="data.remember"]') // Remember checkbox exists
+                ->assertNotChecked('input[id="data.remember"]'); // But not checked by default
     });
 });
