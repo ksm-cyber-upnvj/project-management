@@ -88,6 +88,47 @@ services:
     networks:
       - laravel-network
 
+  # Selenium Chrome Service (for Laravel Dusk browser testing)
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: laravel_selenium
+    restart: unless-stopped
+    ports:
+      - "4444:4444"  # Selenium WebDriver
+      - "7900:7900"  # VNC server for watching tests (password: secret)
+    shm_size: 2gb    # Required for Chrome stability
+    networks:
+      - laravel-network
+
+  # Dusk Service (for running browser tests)
+  dusk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_dusk
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    environment:
+      - APP_ENV=testing
+      - APP_URL=http://nginx
+      - DUSK_DRIVER_URL=http://selenium:4444
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on:
+      - app
+      - db
+      - selenium
+      - nginx
+    networks:
+      - laravel-network
+    profiles:
+      - testing
+
 networks:
   laravel-network:
     driver: bridge
