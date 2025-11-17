@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 uses(DatabaseMigrations::class);
 
-test('authenticated user session can be invalidated', function () {
+test('authenticated user session can be invalidated by clearing cookies', function () {
     // Create role
     $adminRole = Role::firstOrCreate(
         ['name' => 'admin'],
@@ -29,8 +29,8 @@ test('authenticated user session can be invalidated', function () {
                 ->pause(1000)
                 ->assertAuthenticatedAs($user);
 
-        // Simulate logout by clearing session
-        Auth::logout();
+        // Simulate logout by clearing browser cookies
+        $browser->driver->manage()->deleteAllCookies();
 
         // Try to access admin again - should be redirected to login
         $browser->visit('/admin')
