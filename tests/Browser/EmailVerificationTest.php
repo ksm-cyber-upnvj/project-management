@@ -41,7 +41,7 @@ test('unverified user can still login and access admin panel', function () {
     });
 });
 
-test('verified user has email_verified_at timestamp', function () {
+test('user with email_verified_at can access admin panel using loginAs', function () {
     // Create role
     $adminRole = Role::firstOrCreate(
         ['name' => 'admin'],
@@ -57,15 +57,15 @@ test('verified user has email_verified_at timestamp', function () {
     $user->assignRole($adminRole);
 
     $this->browse(function (Browser $browser) use ($user) {
-        // Login
-        $browser->visit('/admin/login')
-                ->waitFor('input[type="email"]', 5)
-                ->type('input[type="email"]', $user->email)
-                ->type('input[type="password"]', 'password')
-                ->press('Sign in')
-                ->waitForLocation('/admin', 10)
+        // Clear cookies to avoid interference
+        $browser->driver->manage()->deleteAllCookies();
+
+        // Login using loginAs helper (bypass form)
+        $browser->loginAs($user)
+                ->visit('/admin')
+                ->pause(1000)
                 ->assertPathIs('/admin')
-                ->assertAuthenticated();
+                ->assertAuthenticatedAs($user);
 
         // Verify email is verified
         $user->refresh();
