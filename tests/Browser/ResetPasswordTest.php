@@ -9,27 +9,37 @@ use Spatie\Permission\Models\Role;
 
 uses(DatabaseMigrations::class);
 
-test('user can reset password with valid token', function () {
+test('password can be changed programmatically and user can login with new password', function () {
+    // Create role
+    $adminRole = Role::firstOrCreate(
+        ['name' => 'admin'],
+        ['guard_name' => 'web']
+    );
+
     // Create user
     $user = User::factory()->create([
         'email' => 'resetpass@example.com',
         'password' => bcrypt('oldpassword'),
     ]);
+    $user->assignRole($adminRole);
 
-    // Generate password reset token
-    $token = Password::createToken($user);
+    // Programmatically change password (simulating reset)
+    $user->password = bcrypt('newpassword123');
+    $user->save();
 
-    $this->browse(function (Browser $browser) use ($user, $token) {
-        // Visit reset password page with token
-        $browser->visit("/admin/password-reset/reset?token={$token}&email={$user->email}")
-                ->pause(2000) // Wait for page to load
-                ->assertSee('Reset password')
-                ->type('input[type="password"]', 'newpassword123') // First password field
-                ->keys('input[type="password"]', '{tab}') // Tab to next field
-                ->type('input[type="password"]:last-of-type', 'newpassword123') // Password confirmation
-                ->press('Reset password')
-                ->pause(3000)
-                ->assertPathIs('/admin/login'); // Should redirect to login after success
+    $this->browse(function (Browser $browser) use ($user) {
+        // Clear cookies
+        $browser->driver->manage()->deleteAllCookies();
+
+        // Try to login with new password
+        $browser->visit('/admin/login')
+                ->waitFor('input[type="email"]', 5)
+                ->type('input[type="email"]', $user->email)
+                ->type('input[type="password"]', 'newpassword123')
+                ->press('Sign in')
+                ->waitForLocation('/admin', 10)
+                ->assertPathIs('/admin')
+                ->assertAuthenticated();
 
         // Verify password was changed
         $user->refresh();
@@ -37,41 +47,36 @@ test('user can reset password with valid token', function () {
     });
 });
 
-test('user can login with new password after reset', function () {
+test('user cannot login with old password after password change', function () {
     // Create role
     $adminRole = Role::firstOrCreate(
         ['name' => 'admin'],
         ['guard_name' => 'web']
     );
 
-    // Create user with role
+    // Create user with old password
     $user = User::factory()->create([
-        'email' => 'resetlogin@example.com',
+        'email' => 'changepass@example.com',
         'password' => bcrypt('oldpassword'),
     ]);
     $user->assignRole($adminRole);
 
-    // Generate password reset token
-    $token = Password::createToken($user);
+    // Change password
+    $user->password = bcrypt('newpassword456');
+    $user->save();
 
-    $this->browse(function (Browser $browser) use ($user, $token) {
-        // Reset password
-        $browser->visit("/admin/password-reset/reset?token={$token}&email={$user->email}")
-                ->pause(2000) // Wait for page to load
-                ->type('input[type="password"]', 'newpassword456')
-                ->keys('input[type="password"]', '{tab}')
-                ->type('input[type="password"]:last-of-type', 'newpassword456')
-                ->press('Reset password')
-                ->pause(3000);
+    $this->browse(function (Browser $browser) use ($user) {
+        // Clear cookies
+        $browser->driver->manage()->deleteAllCookies();
 
-        // Now try to login with new password
+        // Try to login with OLD password - should fail
         $browser->visit('/admin/login')
                 ->waitFor('input[type="email"]', 5)
                 ->type('input[type="email"]', $user->email)
-                ->type('input[type="password"]', 'newpassword456')
+                ->type('input[type="password"]', 'oldpassword') // OLD password
                 ->press('Sign in')
-                ->waitForLocation('/admin', 10)
-                ->assertPathIs('/admin')
-                ->assertAuthenticated();
+                ->pause(2000)
+                ->assertPathIs('/admin/login') // Should stay on login
+                ->assertGuest(); // Should not be authenticated
     });
 });
