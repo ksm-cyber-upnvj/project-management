@@ -283,7 +283,7 @@ The application sends email notifications for:
 
 ## Testing
 
-Cytrack includes automated tests to ensure code quality and prevent bugs.
+Cytrack includes comprehensive automated tests to ensure code quality, security, and reliability.
 
 ### Running Tests
 
@@ -306,7 +306,39 @@ docker compose exec -T app php artisan test --testsuite=Unit
 docker compose exec -T app php artisan test --testsuite=Feature
 ```
 
-Run with additional options:
+### Security Testing
+
+Run security tests to verify authentication, authorization, input validation, and data protection:
+
+```bash
+docker compose exec -T app php artisan test tests/Security
+```
+
+**Coverage:** 80 tests covering OWASP Top 10 security concerns including:
+- Password hashing and authentication security
+- Role-based access control (RBAC) enforcement
+- SQL injection and XSS prevention
+- Mass assignment protection
+- Secure session management
+
+### Reliability Testing
+
+Run reliability tests to verify error handling, data integrity, and system stability:
+
+```bash
+docker compose exec -T app php artisan test tests/Reliability
+```
+
+**Coverage:** 68 tests ensuring system reliability including:
+- Database error handling and recovery
+- Transaction consistency and rollbacks
+- Referential integrity and foreign key constraints
+- Model event reliability (UUID generation, history tracking)
+- Service layer error resilience
+
+### Additional Options
+
+Run with additional options for better output:
 ```bash
 # With colors for better readability
 docker compose exec -T app php artisan test --colors
