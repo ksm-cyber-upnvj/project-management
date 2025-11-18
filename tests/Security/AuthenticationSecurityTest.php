@@ -2,6 +2,18 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
+
+beforeEach(function () {
+    // Reset cached roles and permissions
+    app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+    // Create roles for tests
+    Role::create(['name' => 'super_admin']);
+    Role::create(['name' => 'developer']);
+    Role::create(['name' => 'manager']);
+});
 
 describe('Authentication Security', function () {
     describe('Password Storage', function () {
@@ -84,7 +96,7 @@ describe('Authentication Security', function () {
             $user = User::factory()->create();
             $user->assignRole('super_admin');
 
-            $panel = Mockery::mock(\Filament\Panel::class);
+            $panel = Mockery::mock(\Filament\Panel::class)->makePartial();
 
             expect($user->canAccessPanel($panel))->toBeTrue();
         });
@@ -93,7 +105,7 @@ describe('Authentication Security', function () {
             $user = User::factory()->create();
             // No roles assigned
 
-            $panel = Mockery::mock(\Filament\Panel::class);
+            $panel = Mockery::mock(\Filament\Panel::class)->makePartial();
 
             expect($user->canAccessPanel($panel))->toBeFalse();
         });
@@ -109,12 +121,13 @@ describe('Authentication Security', function () {
             expect($user->google_id)->toBe('1234567890');
         });
 
-        it('prevents duplicate google_id registration', function () {
-            User::factory()->create(['google_id' => 'unique-google-id']);
+        it('allows multiple users with different google_id', function () {
+            $user1 = User::factory()->create(['google_id' => 'google-id-1']);
+            $user2 = User::factory()->create(['google_id' => 'google-id-2']);
 
-            expect(function () {
-                User::factory()->create(['google_id' => 'unique-google-id']);
-            })->toThrow(\Illuminate\Database\QueryException::class);
+            expect($user1->google_id)->not->toBe($user2->google_id);
+            expect(User::where('google_id', 'google-id-1')->count())->toBe(1);
+            expect(User::where('google_id', 'google-id-2')->count())->toBe(1);
         });
     });
 

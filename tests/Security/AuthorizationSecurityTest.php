@@ -5,6 +5,31 @@ use App\Models\Ticket;
 use App\Models\TicketStatus;
 use App\Models\User;
 use App\Policies\TicketPolicy;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
+
+beforeEach(function () {
+    // Reset cached roles and permissions
+    app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+    // Create roles
+    Role::create(['name' => 'super_admin']);
+    Role::create(['name' => 'developer']);
+    Role::create(['name' => 'manager']);
+
+    // Create permissions
+    Permission::create(['name' => 'view_any_ticket']);
+    Permission::create(['name' => 'create_ticket']);
+    Permission::create(['name' => 'delete_ticket']);
+    Permission::create(['name' => 'delete_any_ticket']);
+    Permission::create(['name' => 'force_delete_ticket']);
+    Permission::create(['name' => 'force_delete_any_ticket']);
+    Permission::create(['name' => 'restore_ticket']);
+    Permission::create(['name' => 'restore_any_ticket']);
+    Permission::create(['name' => 'replicate_ticket']);
+    Permission::create(['name' => 'reorder_ticket']);
+});
 
 describe('Authorization Security', function () {
     describe('Role-Based Access Control (RBAC)', function () {
