@@ -336,6 +336,33 @@ docker compose exec -T app php artisan test tests/Reliability
 - Model event reliability (UUID generation, history tracking)
 - Service layer error resilience
 
+### Performance Testing
+
+Run performance tests to measure system performance under various load conditions using K6:
+
+```bash
+# Load test - average and peak load (10-100 concurrent users)
+docker compose run --rm k6 run load-test.js
+
+# Admin test - admin panel performance (10-30 concurrent users)
+docker compose run --rm k6 run admin-test.js
+
+# Spike test - sudden traffic spike (10-1000 concurrent users)
+docker compose run --rm k6 run spike-test.js
+
+# Stress test - gradual load increase (50-400 concurrent users)
+docker compose run --rm k6 run stress-test.js
+```
+
+**Coverage:** 4 test scenarios measuring:
+- Response time under various load conditions (p95, p99)
+- Error rates during normal and peak traffic
+- System behavior during traffic spikes
+- Maximum capacity and breaking point identification
+- Homepage, admin panel, and external dashboard performance
+
+**Note:** See `tests/Performance/README.md` for detailed documentation and customization options.
+
 ### Additional Options
 
 Run with additional options for better output:

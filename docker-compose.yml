@@ -129,6 +129,23 @@ services:
     profiles:
       - testing
 
+  # K6 Service (for performance/load testing)
+  k6:
+    image: grafana/k6:latest
+    container_name: laravel_k6
+    working_dir: /scripts
+    volumes:
+      - ./tests/Performance/k6:/scripts
+    environment:
+      - BASE_URL=http://nginx
+    depends_on:
+      - app
+      - nginx
+    networks:
+      - laravel-network
+    profiles:
+      - performance
+
 networks:
   laravel-network:
     driver: bridge
